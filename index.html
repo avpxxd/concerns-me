@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image</title>
+    <style>
+        /* Basic reset and centering using Flexbox */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            /* Reduced size to prevent pixelation */
+            width: 30vw;
+            max-width: 300px; 
+            height: auto;
+            object-fit: contain;
+            display: block;
+            /* Added image-rendering to keep it as crisp as possible */
+            image-rendering: auto;
+        }
+
+        /* Error message styling */
+        .error-msg {
+            display: none;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img 
+            src="https://media1.tenor.com/m/zv09fLaFc5UAAAAd/concerned.gif" 
+            alt="Concerned GIF"
+            onerror="handleImageError(this)"
+        >
+        <div id="errorBox" class="error-msg">
+            <p>Image could not be loaded.</p>
+        </div>
+    </div>
+
+    <script>
+        function handleImageError(img) {
+            img.style.display = 'none';
+            document.getElementById('errorBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
